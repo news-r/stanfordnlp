@@ -1,0 +1,16 @@
+Package: stanfordnlp
+Title: 'Stanford NLP API'
+Version: 0.0.1
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: 'Stanford NLP API'.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    reticulate
+RoxygenNote: 6.1.1

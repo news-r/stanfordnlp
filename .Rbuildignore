@@ -1,0 +1,4 @@
+^LICENSE\.md$
+env
+.gitignore
+^README\.Rmd$
