@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/news-r/stanfordnlp.svg?branch=master)](https://travis-ci.org/news-r/stanfordnlp)
 <!-- badges: end -->
 
 # stanfordnlp
@@ -37,7 +38,7 @@ library(stanfordnlp)
 
 download_model(lang = "en")
 pipeline <- create_pipeline()
-doc <- pipeline("Barack Obama was born in Hawaii. He was elected president in 2008.")
+doc <- pipeline("Barack Obama was born in Hawaii.")
 doc$sentences[[1]]$print_dependencies()
 ```
 
@@ -49,6 +50,6 @@ reticulate::use_virtualenv("./env")
 # Quick Example from site
 # https://stanfordnlp.github.io/stanfordnlp/installation_usage.html
 pipeline <- create_pipeline(models_dir = "model")
-doc <- pipeline("Barack Obama was born in Hawaii. He was elected president in 2008.")
+doc <- pipeline("Barack Obama was born in Hawaii.")
 cat(reticulate::py_capture_output(doc$sentences[[1]]$print_dependencies()))
 ```

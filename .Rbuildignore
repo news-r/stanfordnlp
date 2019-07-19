@@ -3,3 +3,4 @@ env
 .gitignore
 ^README\.Rmd$
 model
+^\.travis\.yml$
