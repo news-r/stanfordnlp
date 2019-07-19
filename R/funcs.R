@@ -22,7 +22,7 @@ install_stanfordnlp <- function(method = "auto", conda = "auto") {
 #' Download a language pack.
 #' 
 #' @param lang Model language.
-#' 
+#' @param dir Path to directory where to save model.
 #' 
 #' @examples
 #' \dontrun{
@@ -30,25 +30,33 @@ install_stanfordnlp <- function(method = "auto", conda = "auto") {
 #' }
 #' 
 #' @export
-download_model <- function(lang = "en"){
-  stanfordnlp$download(lang)
+download_model <- function(lang = "en", dir = NULL){
+  if(is.null(dir))
+    stanfordnlp$download(lang)
+  else
+    stanfordnlp$download(lang, dir)
 }
 
 #' Pipeline
 #' 
 #' Create a pipeline.
 #' 
-#' @inheritParams download_model
+#' @param ... Parameters (all optional), see details.
 #' 
 #' @details
 #' \itemize{
 #'   \item{\code{lang}: Model language.}
-#'   \item{\code{treebank}: Treebank code from \url{https://stanfordnlp.github.io/stanfordnlp/models.html}..}
+#'   \item{\code{treebank}: Treebank code from \url{https://stanfordnlp.github.io/stanfordnlp/models.html}.}
+#'   \item{\code{processors}: Processors to use \code{tokenize,mwt,pos,lemma,depparse}.}
+#'   \item{\code{models_dir}: Directory where model is stored.}
+#'   \item{\code{use_gpu}: Boolean indicating whether to use the machine's GPU.}
 #' }
 #' 
 #' @examples
 #' \dontrun{
 #' nlp <- create_pipeline()
+#' doc <- nlp("Barack Obama was born in Hawaii.")
+#' doc$sentences[[0]]$print_dependencies()
 #' }
 #' 
 #' @export

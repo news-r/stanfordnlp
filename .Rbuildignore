@@ -2,3 +2,4 @@
 env
 .gitignore
 ^README\.Rmd$
+model

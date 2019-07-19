@@ -24,12 +24,16 @@ example](https://stanfordnlp.github.io/stanfordnlp/installation_usage.html)
 ``` r
 library(stanfordnlp)
 
-reticulate::use_virtualenv("./env")
-
-# Quick Example from site
-# https://stanfordnlp.github.io/stanfordnlp/installation_usage.html
 download_model(lang = "en")
 pipeline <- create_pipeline()
-doc <- pipeline("Barack Obama was born in Hawaii.  He was elected president in 2008.")
+doc <- pipeline("Barack Obama was born in Hawaii. He was elected president in 2008.")
 doc$sentences[[1]]$print_dependencies()
 ```
+
+    #> ('Barack', '4', 'nsubj:pass')
+    #> ('Obama', '1', 'flat')
+    #> ('was', '4', 'aux:pass')
+    #> ('born', '0', 'root')
+    #> ('in', '6', 'case')
+    #> ('Hawaii', '4', 'obl')
+    #> ('.', '4', 'punct')

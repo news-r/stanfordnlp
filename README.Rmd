@@ -32,15 +32,23 @@ remotes::install_github("news-r/stanfordnlp")
 
 Reproduction of [quick example](https://stanfordnlp.github.io/stanfordnlp/installation_usage.html)
 
-```{r}
+```{r, eval=FALSE}
+library(stanfordnlp)
+
+download_model(lang = "en")
+pipeline <- create_pipeline()
+doc <- pipeline("Barack Obama was born in Hawaii. He was elected president in 2008.")
+doc$sentences[[1]]$print_dependencies()
+```
+
+```{r, echo=FALSE}
 library(stanfordnlp)
 
 reticulate::use_virtualenv("./env")
 
 # Quick Example from site
 # https://stanfordnlp.github.io/stanfordnlp/installation_usage.html
-download_model(lang = "en")
-pipeline <- create_pipeline()
-doc <- pipeline("Barack Obama was born in Hawaii.  He was elected president in 2008.")
-doc$sentences[[1]]$print_dependencies()
+pipeline <- create_pipeline(models_dir = "model")
+doc <- pipeline("Barack Obama was born in Hawaii. He was elected president in 2008.")
+cat(reticulate::py_capture_output(doc$sentences[[1]]$print_dependencies()))
 ```
